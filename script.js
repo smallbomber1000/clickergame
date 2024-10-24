@@ -11,7 +11,7 @@ const autoMinerValueCostElement = document.getElementById('auto-miner-value-cost
 
 // Initial game variables
 let credits = 0;
-let clickValue = 1;
+let clickValue = 1; // Initial click value
 let autoMinerCost = 10;
 let autoMinerActive = false;
 let doubleClickCost = 20;
@@ -28,30 +28,18 @@ function updateCredits() {
 // Function to update upgrade button styles based on credits
 function updateUpgradeButtonStyles() {
     // Check Auto-Miner button
-    if (credits >= autoMinerCost && !autoMinerActive) {
-        buyAutoMinerButton.classList.add('button-affordable'); // Enough credits
-    } else {
-        buyAutoMinerButton.classList.remove('button-affordable'); // Default color
-    }
+    buyAutoMinerButton.classList.toggle('button-affordable', credits >= autoMinerCost && !autoMinerActive);
 
     // Check Double Click button
-    if (credits >= doubleClickCost) {
-        buyDoubleClickButton.classList.add('button-affordable'); // Enough credits
-    } else {
-        buyDoubleClickButton.classList.remove('button-affordable'); // Default color
-    }
+    buyDoubleClickButton.classList.toggle('button-affordable', credits >= doubleClickCost);
 
     // Check Auto-Miner Value button
-    if (credits >= autoMinerValueCost) {
-        buyAutoMinerValueButton.classList.add('button-affordable'); // Enough credits
-    } else {
-        buyAutoMinerValueButton.classList.remove('button-affordable'); // Default color
-    }
+    buyAutoMinerValueButton.classList.toggle('button-affordable', credits >= autoMinerValueCost);
 }
 
 // Click button event to mine asteroid and add credits
 clickButtonElement.addEventListener('click', () => {
-    credits += 1 * clickValue;
+    credits += 1 * clickValue; // Add credits based on click value
     updateCredits();
     triggerMiningAnimation(); // Trigger the mining animation
 });
@@ -69,11 +57,11 @@ function triggerMiningAnimation() {
 // Buy Auto-Miner Upgrade
 buyAutoMinerButton.addEventListener('click', () => {
     if (credits >= autoMinerCost && !autoMinerActive) {
-        credits -= autoMinerCost;
+        credits -= autoMinerCost; // Deduct the cost
         autoMinerIncome = 1; // Generates 1 credit per second
         autoMinerActive = true;
         updateCredits();
-        startAutoMiner();
+        startAutoMiner(); // Start the auto miner
         autoMinerUpgradeElement.remove(); // Disable purchase button after buying
     }
 });
@@ -81,7 +69,7 @@ buyAutoMinerButton.addEventListener('click', () => {
 // Auto-Miner function to generate credits over time
 function startAutoMiner() {
     setInterval(() => {
-        credits += autoMinerIncome * autoMinerValue;
+        credits += autoMinerIncome * autoMinerValue; // Generate credits based on value
         updateCredits();
     }, 1000); // Generate credits every second
 }
@@ -89,21 +77,21 @@ function startAutoMiner() {
 // Buy Double Click Power Upgrade
 buyDoubleClickButton.addEventListener('click', () => {
     if (credits >= doubleClickCost) {
-        credits -= doubleClickCost;
-        clickValue = 2; // Double the click value
+        credits -= doubleClickCost; // Deduct the cost
+        clickValue = 2; // Set click value to 2
         updateCredits();
-        doubleClickCost *= 2;
-        doubleClickCostElement.innerText = doubleClickCost;
+        doubleClickCost *= 2; // Double the cost for the next upgrade
+        doubleClickCostElement.innerText = doubleClickCost; // Update displayed cost
     }
 });
 
 // Buy Auto-Miner Value Upgrade
 buyAutoMinerValueButton.addEventListener('click', () => {
     if (credits >= autoMinerValueCost) {
-        credits -= autoMinerValueCost;
-        autoMinerValue *= 2;
-        autoMinerValueCost *= 2;
+        credits -= autoMinerValueCost; // Deduct the cost
+        autoMinerValue *= 2; // Double the auto-miner value
+        autoMinerValueCost *= 2; // Double the cost for the next upgrade
         updateCredits();
-        autoMinerValueCostElement.innerText = autoMinerValueCost;
+        autoMinerValueCostElement.innerText = autoMinerValueCost; // Update displayed cost
     }
 });
