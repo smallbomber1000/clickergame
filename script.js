@@ -51,7 +51,7 @@ function updateUpgradeButtonStyles() {
 
 // Click button event to mine asteroid and add credits
 clickButtonElement.addEventListener('click', () => {
-    credits += clickValue;
+    credits += 1 * clickValue;
     updateCredits();
     triggerMiningAnimation(); // Trigger the mining animation
 });
@@ -92,7 +92,8 @@ buyDoubleClickButton.addEventListener('click', () => {
         credits -= doubleClickCost;
         clickValue = 2; // Double the click value
         updateCredits();
-        doubleClickCostElement.innerText = doubleClickCost * 2;
+        doubleClickCost *= 2;
+        doubleClickCostElement.innerText = doubleClickCost;
     }
 });
 
