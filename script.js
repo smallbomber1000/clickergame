@@ -78,7 +78,7 @@ function startAutoMiner() {
 buyDoubleClickButton.addEventListener('click', () => {
     if (credits >= doubleClickCost) {
         credits -= doubleClickCost; // Deduct the cost
-        clickValue = 2; // Set click value to 2
+        clickValue *= 2; // Set click value to 2
         updateCredits();
         doubleClickCost *= 2; // Double the cost for the next upgrade
         doubleClickCostElement.innerText = doubleClickCost; // Update displayed cost
