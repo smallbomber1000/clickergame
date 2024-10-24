@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Tycoon Clicker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Space Tycoon</h1>
+
+        <!-- Credits Display -->
+        <div class="credits-container">
+            <p>Credits: <span id="credit-count">0</span></p>
+        </div>
+        
+        <!-- Click Button for Mining Asteroids -->
+        <button id="click-button">Mine Asteroid</button>
+
+        <!-- Upgrade Sections -->
+
+        <!-- Normal Click Upgrades -->
+        <div class="upgrade-container">
+            <h2>Click Upgrades</h2>
+            <div class="upgrade" id="double-click-upgrade">
+                <p>Double Click Power (Credits: <span id="double-click-cost">20</span>)</p>
+                <button id="buy-double-click">Buy</button>
+            </div>
+            <!-- You can add more normal click upgrades here -->
+        </div>
+
+        <!-- Auto-Miner Upgrades -->
+        <div class="upgrade-container">
+            <h2>Auto-Miner Upgrades</h2>
+            <div class="upgrade" id="auto-miner-upgrade">
+                <p>Auto-Miner (Credits: <span id="auto-miner-cost">10</span>)</p>
+                <button id="buy-auto-miner">Buy</button>
+            </div>
+            <div class="upgrade" id="auto-miner-value-upgrade">
+                <p>Double Auto-Miner Power (Credits: <span id="auto-miner-value-cost">20</span>)</p>
+                <button id="buy-auto-miner-value">Buy</button>
+            </div>
+            <!-- You can add more auto-miner upgrades here -->
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
