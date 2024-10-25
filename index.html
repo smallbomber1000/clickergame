@@ -8,50 +8,48 @@
 </head>
 <body>
     <div class="game-container">
-        <p>Version 1.0</p>
+        <p id="version-number">Version 1.01</p>
         <h1>Space Tycoon</h1>
 
         <!-- Credits Display -->
         <div class="credits-container">
-            <p>Credits: <span id="credit-count">0</span></p>
+            <p>Credits: <span id="credit-count">nul</span></p>
         </div>
-        <div class = "credits-per-s-container">
-            <p>Credits/s: <span id="credits/s">0</span></p>
+        <div class="credits-per-s-container">
+            <p>Credits/s: <span id="credits/s">nul</span></p>
         </div>
         
         <!-- Click Button for Mining Asteroids -->
         <button id="click-button">Mine Asteroid</button>
 
-        <!-- Upgrade Sections -->
-
-        <!-- Normal Click Upgrades -->
+        <!-- Upgrades -->
         <div class="upgrade-container">
             <h2>Click Upgrades</h2>
             <div class="upgrade" id="double-click-upgrade">
-                <p>Double Click Power (Credits: <span id="double-click-cost">20</span>)</p>
+                <p>Double Click Power (Credits: <span id="double-click-cost">nul</span>)</p>
+                <p>Current Level: <span id="double-click-level">nul</span></p>
                 <button id="buy-double-click">Buy</button>
             </div>
-            <!-- You can add more normal click upgrades here -->
         </div>
 
-        <!-- Auto-Miner Upgrades -->
+        <!-- Auto Miner Upgrades -->
         <div class="upgrade-container">
             <h2>Auto-Miner Upgrades</h2>
             <div class="upgrade" id="auto-miner-upgrade">
-                <p>Auto-Miner (Credits: <span id="auto-miner-cost">10</span>)</p>
+                <p>Auto-Miner (Credits: <span id="auto-miner-cost">nul</span>)</p>
                 <button id="buy-auto-miner">Buy</button>
             </div>
-            <div class="upgrade" id="auto-miner-value-upgrade">
-                <p>Double Auto-Miner Power (Credits: <span id="auto-miner-value-cost">20</span>)</p>
+            <div class="upgrade locked" id="auto-miner-value-upgrade">
+                <p>Double Auto-Miner Power (Credits: <span id="auto-miner-value-cost">nul</span>)</p>
+                <p>Current Level: <span id="auto-miner-value-level">nul</span></p>
                 <button id="buy-auto-miner-value">Buy</button>
             </div>
-            <div class="upgrade" id="auto-miner-time-upgrade">
-                <p>Half Auto-Miner Time (Credits: <span id="auto-miner-time-cost">40</span>)</p>
+            <div class="upgrade locked" id="auto-miner-time-upgrade">
+                <p>Half Auto-Miner Time (Credits: <span id="auto-miner-time-cost">nul</span>)</p>
+                <p>Current Level: <span id="auto-miner-time-level">nul</span></p>
                 <button id="buy-auto-miner-time">Buy</button>
             </div>
-            <!-- You can add more auto-miner upgrades here -->
         </div>
-
     </div>
     <script src="script.js"></script>
 </body>

@@ -27,7 +27,7 @@ button {
     border-radius: 5px;
     font-size: 2vw;
     cursor: pointer;
-    margin-top: 5%;
+    margin-top: 2%;
     transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -83,4 +83,12 @@ button:hover {
 
 .credits-per-s-container {
     color: #4a4a4a;
+}
+
+.locked {
+    display: none;
+}
+
+#version-number {
+    color: #ff9a7f;
 }
