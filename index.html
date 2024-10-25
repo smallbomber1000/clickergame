@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Version 1.0</p>
     <div class="game-container">
+        <p>Version 1.0</p>
         <h1>Space Tycoon</h1>
 
         <!-- Credits Display -->
         <div class="credits-container">
             <p>Credits: <span id="credit-count">0</span></p>
+        </div>
+        <div class = "credits-per-s-container">
+            <p>Credits/s: <span id="credits/s">0</span></p>
         </div>
         
         <!-- Click Button for Mining Asteroids -->
@@ -41,6 +44,10 @@
             <div class="upgrade" id="auto-miner-value-upgrade">
                 <p>Double Auto-Miner Power (Credits: <span id="auto-miner-value-cost">20</span>)</p>
                 <button id="buy-auto-miner-value">Buy</button>
+            </div>
+            <div class="upgrade" id="auto-miner-time-upgrade">
+                <p>Half Auto-Miner Time (Credits: <span id="auto-miner-time-cost">40</span>)</p>
+                <button id="buy-auto-miner-time">Buy</button>
             </div>
             <!-- You can add more auto-miner upgrades here -->
         </div>

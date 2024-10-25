@@ -8,6 +8,9 @@ const doubleClickCostElement = document.getElementById('double-click-cost');
 const autoMinerUpgradeElement = document.getElementById('auto-miner-upgrade');
 const buyAutoMinerValueButton = document.getElementById('buy-auto-miner-value');
 const autoMinerValueCostElement = document.getElementById('auto-miner-value-cost');
+const buyAutoMinerTimeButton = document.getElementById('buy-auto-miner-time');
+const autoMinerTimeCostElement = document.getElementById('auto-miner-time-cost');
+const cpsElement = document.getElementById('credits/s');
 
 // Initial game variables
 let credits = 0;
@@ -16,13 +19,16 @@ let autoMinerCost = 10;
 let autoMinerActive = false;
 let doubleClickCost = 20;
 let autoMinerIncome = 0;
-let autoMinerValue = 1;
+let autoMinerValue = 0;
 let autoMinerValueCost = 20;
+let autoMinerTimeCost = 40;
+let autoMinerTime = 1; // In seconds
 
 // Function to update credits display
 function updateCredits() {
     creditCountElement.innerText = credits;
     updateUpgradeButtonStyles(); // Update button styles whenever credits change
+    cpsElement.innerText = autoMinerValue / autoMinerTime
 }
 
 // Function to update upgrade button styles based on credits
@@ -35,6 +41,8 @@ function updateUpgradeButtonStyles() {
 
     // Check Auto-Miner Value button
     buyAutoMinerValueButton.classList.toggle('button-affordable', credits >= autoMinerValueCost);
+
+    buyAutoMinerTimeButton.classList.toggle('button-affordable', credits >= autoMinerTimeCost);
 }
 
 // Click button event to mine asteroid and add credits
@@ -59,6 +67,7 @@ buyAutoMinerButton.addEventListener('click', () => {
     if (credits >= autoMinerCost && !autoMinerActive) {
         credits -= autoMinerCost; // Deduct the cost
         autoMinerIncome = 1; // Generates 1 credit per second
+        autoMinerValue = 1;
         autoMinerActive = true;
         updateCredits();
         startAutoMiner(); // Start the auto miner
@@ -68,10 +77,18 @@ buyAutoMinerButton.addEventListener('click', () => {
 
 // Auto-Miner function to generate credits over time
 function startAutoMiner() {
-    setInterval(() => {
+    generateCredits(); // Start the first credit generation
+}
+
+// Function to generate credits using setTimeout
+function generateCredits() {
+    if (autoMinerActive) {
         credits += autoMinerIncome * autoMinerValue; // Generate credits based on value
         updateCredits();
-    }, 1000); // Generate credits every second
+
+        // Schedule the next credit generation after the specified time
+        setTimeout(generateCredits, autoMinerTime * 1000); // Use the current auto-miner time
+    }
 }
 
 // Buy Double Click Power Upgrade
@@ -93,5 +110,16 @@ buyAutoMinerValueButton.addEventListener('click', () => {
         autoMinerValueCost *= 2; // Double the cost for the next upgrade
         updateCredits();
         autoMinerValueCostElement.innerText = autoMinerValueCost; // Update displayed cost
+    }
+});
+
+// Buy Auto-Miner Time Upgrade
+buyAutoMinerTimeButton.addEventListener('click', () => {
+    if (credits >= autoMinerTimeCost) {
+        credits -= autoMinerTimeCost; // Deduct the cost
+        autoMinerTime /= 2; // Halve the auto-miner time
+        autoMinerTimeCost *= 4; // Update cost for the next purchase
+        updateCredits();
+        autoMinerTimeCostElement.innerText = autoMinerTimeCost; // Update displayed cost
     }
 });

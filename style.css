@@ -80,3 +80,7 @@ button:hover {
 .mining {
     animation: mineAnimation 0.5s forwards;
 }
+
+.credits-per-s-container {
+    color: #4a4a4a;
+}
